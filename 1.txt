@@ -1,22 +1,5 @@
-创建虚拟环境 python3 -m venv myenv
-激活虚拟环境 source env/bin/activate
-退出虚拟环境 deactivate
-
-
-Sails.js
-
-Express 
-
-git remote set-url origin git@github.com:muniumazhen/obj.git
-git remote add origin git@github.com:muniumazhen/obj.git
-git@github.com:muniumazhen/obj.git
-
-git config --global user.name "zhenma"
-git config --global user.email "muniumazhen@icloud.com"
-
-
+更新git仓库
 git status
 git add .
-
+git commit -m "Your commit message"
 git push -u origin main
-
