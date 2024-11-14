@@ -14,36 +14,9 @@ git@github.com:muniumazhen/obj.git
 git config --global user.name "zhenma"
 git config --global user.email "muniumazhen@icloud.com"
 
+
+git status
+git add .
+
 git push -u origin main
 
-
-
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# 临时文件
-*.tmp
-*.log
-
-# 忽略所有隐藏文件夹（以"."开头）
-.*
-
-# Node.js
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-.pnpm-debug.log*
-package-lock.json
-yarn.lock
-
-# Logs
-logs/
-*.log
-logs/**/*.log
-
-# 环境文件
-.env
