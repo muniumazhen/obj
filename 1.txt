@@ -1,5 +1,4 @@
 更新git仓库
-git status
 git add .
 git commit -m "Your commit message"
 git push -u origin main
