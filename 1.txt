@@ -2,3 +2,10 @@
 git add .
 git commit -m "Your commit message"
 git push -u origin main
+
+
+启动mysql
+sudo /usr/local/mysql/support-files/mysql.server start
+
+停止mysql
+sudo /usr/local/mysql/support-files/mysql.server stop
