@@ -1,6 +1,6 @@
 import User from '../models/userModel.js'; // 引入用户模型
 import jwt from 'jsonwebtoken'; // JWT 库
-import dotenv from 'dotenv'; // 环境变量
+// import dotenv from 'dotenv'; // 环境变量
 import bcrypt from 'bcrypt'; // 用于加密密码
 
 // 用户注册功能
@@ -87,5 +87,46 @@ export const loginUser = async (req, res) => {
   } catch (error) {
     // 错误处理部分
     res.status(500).json({ message: '登录失败', error: error.message });
+  }
+};
+
+// 为用户分配角色
+import Role from '../models/roleModel.js';
+export const assignRoleToUser = async (req, res) => {
+  const { userId, roleId } = req.body;
+  
+  try {
+    const user = await User.findByPk(userId);
+    
+    const role = await Role.findByPk(roleId);
+    
+    if (!user || !role) {
+      return res.status(404).json({ message: '用户或角色不存在' });
+    }
+
+    await user.addRole(role); // Sequelize 提供的关联方法
+    res.status(200).json({ message: '角色分配成功' });
+  } catch (error) {
+    res.status(500).json({ message: '角色分配失败', error: error.message });
+  }
+};
+
+
+// 获取用户的角色
+export const getUserRoles = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const user = await User.findByPk(userId, {
+      include: Role, // 获取关联的角色
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: '用户不存在' });
+    }
+
+    res.status(200).json({ roles: user.Roles });
+  } catch (error) {
+    res.status(500).json({ message: '获取用户角色失败', error: error.message });
   }
 };
